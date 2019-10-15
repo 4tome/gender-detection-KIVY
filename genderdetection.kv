@@ -1,0 +1,43 @@
+<MyGrid>:
+    img_path: img_path
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        FloatLayout:
+            MDTextFieldRect:
+                id: img_path
+                hint_text: "Enter the image path here"
+                multiline:False
+                pos_hint: {"x":0.1, "top":0.83}
+                size_hint: 0.75, 0.093
+                readonly: False
+                on_text_validate: root.addBtn()
+
+            MDIconButton:
+                icon: 'image-search'
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.primary_color
+                size_hint: None, None
+                size: 1 * dp(48), dp(48)
+                text: ''
+                opposite_colors: True
+                pos_hint: {'center_x': .88, 'center_y': .794}
+                on_release: root.file_manager_open()
+
+            MDRaisedButton:
+                size_hint: None, None
+                size: 3 * dp(48), dp(40)
+                text: 'Detect gender'
+                opposite_colors: True
+                pos_hint: {'center_x': .5, 'center_y': .6}
+                on_release: root.process_button_click(1)
+
+            MDRaisedButton:
+                size_hint: None, None
+                size: 3 * dp(48), dp(48)
+                text: 'Webcam gender detection'
+                opposite_colors: True
+                pos_hint: {'center_x': .5, 'center_y': .3}
+                on_release: root.process_button_click(2)
